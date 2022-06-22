@@ -1,9 +1,147 @@
+import 'dart:developer';
+
+import 'package:assignment/app/common/constants/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  Offset _postion = Offset.zero;
 
-  final count = 0.obs;
+  Offset get postion => _postion;
+
+  onPanStart(DragStartDetails details) {}
+
+  onPanEnd(DragEndDetails details) {
+    showDialog();
+    resetPostion();
+  }
+
+  onPanUpdate(DragUpdateDetails details) {
+    _postion += details.delta;
+    update();
+  }
+
+  resetPostion() {
+    _postion = Offset.zero;
+    update();
+  }
+
+  showDialog() {
+    log('callled');
+    var x = _postion.dx;
+    var y = _postion.dy;
+
+    final delta = 100;
+
+    if (x >= delta) {
+      //right swipe
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'YOU LIKE THE PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+      log('right swipe');
+    } else if (x <= -delta) {
+      //left swipe
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'SEE PREVIOUS PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+      log('left swipe');
+    } else if (y <= -delta / 2) {
+      //up swipe
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'YOU SUPER LIKE THE PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+      log('up swipe');
+    } else if (y >= delta / 2) {
+      //down swipe
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'YOU DIDN’T LIKE THE PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+      log('down swipe');
+    } else {
+      log('inside else');
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +156,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

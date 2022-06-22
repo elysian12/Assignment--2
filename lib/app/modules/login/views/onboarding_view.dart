@@ -1,8 +1,10 @@
 import 'package:assignment/app/common/constants/colors.dart';
 import 'package:assignment/app/common/constants/text_style.dart';
 import 'package:assignment/app/modules/login/controllers/login_controller.dart';
+import 'package:assignment/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class OnBoardingView extends GetView<LoginController> {
@@ -31,9 +33,12 @@ class OnBoardingView extends GetView<LoginController> {
                             child: Icon(Icons.arrow_back))
                         : SizedBox.shrink();
                   }),
-                  Text(
-                    'Skip',
-                    style: TextStyle(color: AppColors.secondaryFontColor),
+                  InkWell(
+                    onTap: () => Get.offAllNamed(Routes.HOME),
+                    child: Text(
+                      'Skip',
+                      style: TextStyle(color: AppColors.secondaryFontColor),
+                    ),
                   )
                 ],
               ),
