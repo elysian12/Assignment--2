@@ -142,6 +142,106 @@ class HomeController extends GetxController {
     }
   }
 
+  showDialogOnButton(int index) {
+    if (index == 0) {
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'SEE PREVIOUS PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+    } else if (index == 1) {
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'YOU SUPER LIKE THE PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+    } else if (index == 2) {
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'YOU LIKE THE PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+    } else {
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            'YOU DIDN’T LIKE THE PROFILE',
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                'Ok',
+              ),
+            )
+          ],
+        ),
+      );
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();

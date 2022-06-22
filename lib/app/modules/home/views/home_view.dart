@@ -52,12 +52,47 @@ class HomeView extends GetView<HomeController> {
               }),
             ),
             Spacer(
-              flex: 4,
+              flex: 2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(4, (index) {
+                return InkWell(
+                  onTap: () {
+                    controller.showDialogOnButton(index);
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(left: 10),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.black,
+                    ),
+                    child: SvgPicture.asset(returnArrow(index)),
+                  ),
+                );
+              }),
+            ),
+            Spacer(
+              flex: 2,
             ),
           ],
         ),
       ),
     );
+  }
+
+  String returnArrow(int index) {
+    if (index == 0) {
+      return 'assets/arrow-left.svg';
+    } else if (index == 1) {
+      return 'assets/arrow-up.svg';
+    } else if (index == 2) {
+      return 'assets/arrow-right.svg';
+    }
+    return 'assets/arrow-down.svg';
   }
 
   Widget customCard() {
