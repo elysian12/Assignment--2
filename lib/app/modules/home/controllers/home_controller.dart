@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:assignment/app/common/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

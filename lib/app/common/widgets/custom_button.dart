@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:assignment/app/common/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
@@ -30,6 +33,86 @@ class CustomButton extends StatelessWidget {
           label,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
+      ),
+    );
+  }
+}
+
+class CustomTextFormField extends StatelessWidget {
+  final String hintText;
+  final String suffixIcon;
+  final bool showSuffixIcon;
+  final bool showPrefixIcon;
+  final bool isController;
+  final TextEditingController? controller;
+  const CustomTextFormField(
+      {Key? key,
+      required this.hintText,
+      required this.suffixIcon,
+      this.showSuffixIcon = false,
+      this.showPrefixIcon = true,
+      this.isController = false,
+      this.controller})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 20),
+      child: TextFormField(
+        controller: isController ? controller : null,
+        style: TextStyle(color: AppColors.primaryColor),
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.only(
+              left: 20,
+              top: 15,
+              bottom: 15,
+            ),
+            labelStyle: TextStyle(color: AppColors.primaryColor),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: AppColors.primaryColor.withOpacity(0.5),
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide:
+                  BorderSide(color: AppColors.primaryColor.withOpacity(0.5)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide:
+                  BorderSide(color: AppColors.primaryColor.withOpacity(0.5)),
+            ),
+            prefixIconConstraints: BoxConstraints(
+              maxWidth: 100,
+              maxHeight: 80,
+            ),
+            prefixIcon: showPrefixIcon
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 20),
+                    child: SvgPicture.asset(
+                      suffixIcon,
+                      height: 20,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : null,
+            suffixIcon: showSuffixIcon
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 20),
+                    child: SvgPicture.asset(
+                      suffixIcon,
+                      height: 10,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : null,
+            hintText: hintText,
+            hintStyle: TextStyle(
+              color: AppColors.primaryColor.withOpacity(0.5),
+            )),
       ),
     );
   }

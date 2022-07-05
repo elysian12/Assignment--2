@@ -84,11 +84,16 @@ class LoginView extends GetView<LoginController> {
             Spacer(
               flex: 1,
             ),
-            Text(
-              'Don\'t have an account? Register',
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.secondaryFontColor),
+            InkWell(
+              onTap: () {
+                Get.toNamed(Routes.SIGNUP);
+              },
+              child: Text(
+                'Don\'t have an account? Register',
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.secondaryFontColor),
+              ),
             ),
             Spacer(
               flex: 1,
